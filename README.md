@@ -4,7 +4,4 @@
 
 Here is a list of some HTB machines/challenges writeup that I got time to write. Lol! Not my greatest part of the job, but I get it, it's the most important part.
 
-### Respect me please  
-```
-https://app.hackthebox.com/profile/1646915
-```
+[Respect - abs0rb](https://app.hackthebox.com/profile/1646915)
