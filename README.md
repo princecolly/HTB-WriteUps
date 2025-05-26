@@ -1,2 +1,10 @@
-# HTB-Fluffy
-This is my report for HTB's AD Easy machine Fluffy released during season 8.
+# HTB: Fluffy
+
+Full Domain Admin compromise using:
+- NTLM relay via `.library-ms`
+- Shadow credentials (`msDS-KeyCredentialLink`)
+- ESC9 certificate abuse
+- Certipy + Responder + Impacket tooling
+
+Author: @abs0rb - HTB
+Date: 2025-05-26
